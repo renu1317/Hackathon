@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Integer to Roman</title>
+</head>
+<body>
+    <h1>Convert Integer to Roman</h1>
+    <p>Enter an integer:</p>
+    <input type="text" id="inputNumber" placeholder="e.g., 3">
+    <button onclick="convertToRoman()">Convert</button>
+    <p id="result"></p>
+
+    <script>
+        function convertToRoman() {
+            const inputNumber = document.getElementById("inputNumber").value;
+            const num = parseInt(inputNumber);
+
+            if (!isNaN(num) && num >= 1 && num <= 39) {
+                const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+                const romanSymbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+                let result = "";
+
+                for (let i = 0; i < values.length; i++) {
+                    while (num >= values[i]) {
+                        result += romanSymbols[i];
+                        num -= values[i];
+                    }
+                }
+
+                document.getElementById("result").textContent = "In Roman: " + result;
+            } else {
+                document.getElementById("result").textContent = "Please enter a valid integer between 1 and 39.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Missing Number</title>
+</head>
+<body>
+    <h1>Find Missing Number</h1>
+    <p>Enter integers from 1 to n with one number missing, separated by commas:</p>
+    <input type="text" id="inputArray" placeholder="e.g., 1,2,4,5">
+    <button onclick="findMissingNumber()">Find Missing Number</button>
+    <p id="result"></p>
+
+    <script>
+        function findMissingNumber() {
+            const inputArray = document.getElementById("inputArray").value;
+            const array = inputArray.split(',').map(Number);
+            const n = array.length + 1;
+            const expectedSum = (n * (n + 1)) / 2;
+            const actualSum = array.reduce((acc, num) => acc + num, 0);
+            const missingNumber = expectedSum - actualSum;
+
+            document.getElementById("result").textContent = "Missing Number: " + missingNumber;
+        }
+    </script>
+</body>
+</html>
